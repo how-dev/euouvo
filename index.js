@@ -6,13 +6,15 @@ const AudioEngine = {
         if (!this.ctx) {
             this.ctx = new (window.AudioContext || window.webkitAudioContext)();
         }
+        if (this.ctx.state === 'suspended') {
+            this.ctx.resume();
+        }
     },
 
     playNote(frequency, duration = 1) {
         this.init();
-        if (this.ctx.state === 'suspended') {
-            this.ctx.resume();
-        }
+        if (!this.ctx) return;
+
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
@@ -100,9 +102,9 @@ themeToggleBtn.onclick = () => {
 initTheme();
 
 // Init listeners
-document.getElementById('btn-easy').onclick = () => startGame('easy');
-document.getElementById('btn-medium').onclick = () => startGame('medium');
-document.getElementById('btn-hard').onclick = () => startGame('hard');
+document.getElementById('btn-easy').onclick = () => { AudioEngine.init(); startGame('easy'); };
+document.getElementById('btn-medium').onclick = () => { AudioEngine.init(); startGame('medium'); };
+document.getElementById('btn-hard').onclick = () => { AudioEngine.init(); startGame('hard'); };
 document.getElementById('btn-back').onclick = backToMenu;
 document.getElementById('play-ref').onclick = () => AudioEngine.playNote(getNoteFrequency('A', 4));
 document.getElementById('play-question').onclick = () => AudioEngine.playNote(currentNote.freq);
