@@ -1,0 +1,271 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --success-color: #22c55e;
+    --success-hover: #16a34a;
+    --error-color: #ef4444;
+    --error-hover: #dc2626;
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+    
+    /* Light Theme (Default in variables, but we'll override for dark) */
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    
+    --theme-color: var(--primary-color);
+    --theme-hover: var(--primary-hover);
+}
+
+body.dark-theme {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: #1e293b;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#app {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--theme-color);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+header p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.hidden-seo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.theme-toggle-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.btn-theme {
+    background: var(--card-bg);
+    border: 1px solid var(--text-muted);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+}
+
+.btn-theme:hover {
+    transform: scale(1.1);
+}
+
+#game-container {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+h2, h3 {
+    margin-bottom: 1.5rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--theme-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-diff {
+    aspect-ratio: 1 / 1;
+    padding: 1rem;
+    text-align: center;
+}
+
+.btn-diff .title {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.btn-diff .desc {
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+/* Difficulty Buttons with Hover */
+.btn-green { background-color: var(--success-color); }
+.btn-green:hover { background-color: var(--success-hover) !important; transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4); }
+
+.btn-yellow { background-color: var(--warning-color); }
+.btn-yellow:hover { background-color: var(--warning-hover) !important; transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4); }
+
+.btn-red { background-color: var(--error-color); }
+.btn-red:hover { background-color: var(--error-hover) !important; transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4); }
+
+.btn:hover {
+    background-color: var(--theme-hover);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--theme-color);
+    background: transparent;
+    color: var(--theme-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--theme-color);
+    color: white;
+}
+
+.btn-main {
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Feedback animations */
+#feedback {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.show-feedback {
+    opacity: 1 !important;
+}
+
+.success {
+    background-color: #dcfce7;
+    color: var(--success-color);
+    animation: bounce 0.5s ease;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: var(--error-color);
+    animation: shake 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+#options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 500px) {
+    .difficulty-grid {
+        grid-template-columns: 1fr;
+    }
+    .btn-diff {
+        aspect-ratio: auto;
+        min-height: 120px;
+    }
+}
+
+@media (max-width: 400px) {
+    #options-container {
+        grid-template-columns: 1fr;
+    }
+}

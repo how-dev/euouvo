@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://euouvo.com.br/sitemap.xml

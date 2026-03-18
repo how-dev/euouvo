@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu Ouvo - Treinamento Auditivo Musical Gratuito</title>
+    <meta name="description" content="Melhore seu ouvido musical com o Eu Ouvo. Exercícios interativos de percepção auditiva, reconhecimento de notas e treinamento de ouvido absoluto em três níveis de dificuldade.">
+    <meta name="keywords" content="treinamento auditivo, percepção musical, ouvido absoluto, notas musicais, teoria musical, exercício de música, reconhecer notas, solfejo, audição musical">
+    <meta name="author" content="Eu Ouvo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://euouvo.com.br/">
+    <meta property="og:title" content="Eu Ouvo - Treinamento Auditivo Musical">
+    <meta property="og:description" content="Desenvolva sua percepção musical de forma divertida e gratuita com o Eu Ouvo.">
+    <meta property="og:image" content="https://euouvo.com.br/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://euouvo.com.br/">
+    <meta property="twitter:title" content="Eu Ouvo - Treinamento Auditivo Musical">
+    <meta property="twitter:description" content="Desenvolva sua percepção musical de forma divertida e gratuita com o Eu Ouvo.">
+    <meta property="twitter:image" content="https://euouvo.com.br/assets/og-image.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://euouvo.com.br/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
+</head>
+<body>
+    <div id="app">
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="btn-theme" title="Alternar Tema">🌙</button>
+        </div>
+        <header>
+            <h1>Eu Ouvo</h1>
+            <p>O seu treinamento auditivo musical gratuito e interativo.</p>
+            <section class="seo-text hidden-seo">
+                <p>O Eu Ouvo é um aplicativo online desenvolvido para ajudar músicos iniciantes e avançados a treinarem a sua percepção sonora e auditiva de maneira fácil e divertida através de desafios de notas musicais.</p>
+            </section>
+        </header>
+
+        <main id="game-container">
+            <div id="menu">
+                <h2>Escolha a Dificuldade</h2>
+                <div class="difficulty-grid">
+                    <button id="btn-easy" class="btn btn-diff btn-green">
+                        <span class="title">Fácil</span>
+                        <span class="desc">Referência em Lá, 2 opções, sem sustenidos.</span>
+                    </button>
+                    <button id="btn-medium" class="btn btn-diff btn-yellow">
+                        <span class="title">Médio</span>
+                        <span class="desc">Sem referência, 3 opções, com sustenidos.</span>
+                    </button>
+                    <button id="btn-hard" class="btn btn-diff btn-red">
+                        <span class="title">Difícil</span>
+                        <span class="desc">Sem referência, 4 opções, com sustenidos, range estendido.</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="game" class="hidden">
+                <div id="feedback" class=""></div>
+                <div id="reference-section" class="hidden">
+                    <p>Isso é um Lá (A):</p>
+                    <button id="play-ref" class="btn-icon">▶ Ouvir Referência</button>
+                </div>
+                
+                <div id="question-section">
+                    <h3>Que nota é essa?</h3>
+                    <button id="play-question" class="btn-icon btn-main">▶ Ouvir Nota</button>
+                </div>
+
+                <div id="options-container" class="button-group">
+                    <!-- Botões de opções serão inseridos aqui pelo JS -->
+                </div>
+                
+                <button id="btn-back" class="btn-secondary">Voltar ao Menu</button>
+            </div>
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
