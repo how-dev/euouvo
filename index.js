@@ -40,7 +40,8 @@ const DIFFICULTIES = {
         sharps: false,
         reference: true,
         color: '#22c55e',
-        hover: '#16a34a'
+        hover: '#16a34a',
+        points: 1
     },
     medium: {
         range: [3, 5],
@@ -48,7 +49,8 @@ const DIFFICULTIES = {
         sharps: true,
         reference: false,
         color: '#f59e0b',
-        hover: '#d97706'
+        hover: '#d97706',
+        points: 2
     },
     hard: {
         range: [2, 6],
@@ -56,7 +58,8 @@ const DIFFICULTIES = {
         sharps: true,
         reference: false,
         color: '#ef4444',
-        hover: '#dc2626'
+        hover: '#dc2626',
+        points: 3
     }
 };
 
@@ -72,6 +75,7 @@ function getNoteFrequency(noteName, octave) {
 // Game State
 let currentDifficulty = null;
 let currentNote = null;
+let score = 0;
 
 // DOM Elements
 const menuEl = document.getElementById('menu');
@@ -80,6 +84,7 @@ const feedbackEl = document.getElementById('feedback');
 const optionsContainer = document.getElementById('options-container');
 const refSection = document.getElementById('reference-section');
 const themeToggleBtn = document.getElementById('theme-toggle');
+const scoreValueEl = document.getElementById('score-value');
 
 // Theme Management
 function initTheme() {
@@ -185,6 +190,15 @@ function nextQuestion() {
 
 function checkAnswer(selected) {
     const isCorrect = selected === currentNote.label;
+    
+    // Update Score
+    if (isCorrect) {
+        score += currentDifficulty.points;
+    } else {
+        score = Math.max(0, score - 1);
+    }
+    updateScoreDisplay();
+
     showFeedback(isCorrect);
     
     // Desabilitar botões para evitar cliques múltiplos
@@ -204,4 +218,8 @@ function showFeedback(correct) {
 function hideFeedback() {
     feedbackEl.className = 'hidden';
     feedbackEl.textContent = '';
+}
+
+function updateScoreDisplay() {
+    scoreValueEl.textContent = score;
 }
