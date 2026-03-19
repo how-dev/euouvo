@@ -212,11 +212,11 @@ function checkAnswer(selected) {
 
 function showFeedback(correct) {
     feedbackEl.textContent = correct ? 'Acertou! 🎉' : `Errou! Era ${currentNote.label} 😕`;
-    feedbackEl.className = `show-feedback ${correct ? 'success' : 'error'}`;
+    feedbackEl.classList.add('show-feedback', correct ? 'success' : 'error');
 }
 
 function hideFeedback() {
-    feedbackEl.className = 'hidden';
+    feedbackEl.classList.remove('show-feedback', 'success', 'error');
     feedbackEl.textContent = '';
 }
 

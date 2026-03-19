@@ -250,15 +250,12 @@ h2, h3 {
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s;
-}
-
-#feedback.hidden {
-    visibility: hidden;
-    display: flex; /* Keep layout space */
+    visibility: hidden; /* Garantir que comece escondido e não interativo */
 }
 
 .show-feedback {
     opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .success {
