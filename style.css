@@ -63,7 +63,33 @@ header h1 {
 .stats-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 1rem;
+}
+
+.btn-small {
+    background: var(--card-bg);
+    border: 2px solid var(--theme-color);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+    transform: scale(1.1);
+    border-color: var(--error-color);
+}
+
+.btn-small:active {
+    transform: scale(0.95);
 }
 
 #score-display {

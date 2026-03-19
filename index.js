@@ -75,7 +75,7 @@ function getNoteFrequency(noteName, octave) {
 // Game State
 let currentDifficulty = null;
 let currentNote = null;
-let score = 0;
+let score = parseInt(localStorage.getItem('euouvo_score')) || 0;
 
 // DOM Elements
 const menuEl = document.getElementById('menu');
@@ -85,6 +85,7 @@ const optionsContainer = document.getElementById('options-container');
 const refSection = document.getElementById('reference-section');
 const themeToggleBtn = document.getElementById('theme-toggle');
 const scoreValueEl = document.getElementById('score-value');
+const resetScoreBtn = document.getElementById('btn-reset-score');
 
 // Theme Management
 function initTheme() {
@@ -113,6 +114,16 @@ document.getElementById('btn-hard').onclick = () => { AudioEngine.init(); startG
 document.getElementById('btn-back').onclick = backToMenu;
 document.getElementById('play-ref').onclick = () => AudioEngine.playNote(getNoteFrequency('A', 4));
 document.getElementById('play-question').onclick = () => AudioEngine.playNote(currentNote.freq);
+
+resetScoreBtn.onclick = () => {
+    if (confirm('Deseja zerar sua pontuação?')) {
+        score = 0;
+        localStorage.setItem('euouvo_score', score);
+        updateScoreDisplay();
+    }
+};
+
+updateScoreDisplay();
 
 function startGame(diff) {
     currentDifficulty = DIFFICULTIES[diff];
@@ -197,6 +208,7 @@ function checkAnswer(selected) {
     } else {
         score = Math.max(0, score - 1);
     }
+    localStorage.setItem('euouvo_score', score);
     updateScoreDisplay();
 
     showFeedback(isCorrect);
